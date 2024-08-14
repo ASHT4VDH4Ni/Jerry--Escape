@@ -1,0 +1,90 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+#level-info {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+#game-board {
+    display: grid;
+    grid-template-columns: repeat(10, 45px);
+    grid-template-rows: repeat(10, 45px);
+    gap: 6px;
+    margin: 20px 0;
+}
+
+.cell {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.jerry {
+    background: url('jerry.png') no-repeat center center;
+    background-size: cover;
+    animation: jerryAnimation 0.5s infinite alternate;
+}
+
+.robot-tom {
+    background: url('tom.png') no-repeat center center;
+    background-size: cover;
+}
+
+.trap {
+    background: url('trap.png') no-repeat center center;
+    background-size: cover;
+    background-color: red;
+    border-radius: 50%;
+}
+
+.hole {
+    background-color: black;
+    border-radius: 50%;
+}
+
+@keyframes jerryAnimation {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.2); }
+}
+
+#controls {
+    margin-top: 10px;
+}
+
+button {
+    margin: 5px;
+    padding: 10px 10px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+button:active {
+    background-color: #ddd;
+}
+
+.explosion {
+    background-color: orange;
+    border-radius: 50%;
+    animation: explosionAnimation 0.5s;
+}
+
+#scores {
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+    margin-bottom: 20px;
+}
+
+@keyframes explosionAnimation {
+    0% { background-color: orange; }
+    100% { background-color: transparent; }
+}
