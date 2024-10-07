@@ -25,7 +25,6 @@ function initBoard() {
     startTomChasing();
 }
 
-// level Up
 function setupLevel() {
     levelInfo.textContent = `Level: ${level}`;
     
@@ -72,9 +71,8 @@ function move(direction) {
     checkGameState();
 }
 
-// jerries power
 function useGadget(gadget) {
-    if (gadget === 'smokeBomb') {
+    if (gadget === 'Teleport') {
         jerryPosition = {
             x: Math.floor(Math.random() * boardSize),
             y: Math.floor(Math.random() * boardSize),
@@ -103,45 +101,20 @@ function startTomChasing() {
     }, 1000);
 }
 
-// // test Bomb explosion effect
-// function explodeBomb(x, y) {
-//     const explosionRange = 1; // 1 tile radius around the bomb
-//     for (let i = x - explosionRange; i <= x + explosionRange; i++) {
-//         for (let j = y - explosionRange; j <= y + explosionRange; j++) {
-//             if (i >= 0 && i < boardSize && j >= 0 && j < boardSize) {
-//                 const cell = document.querySelector(`.cell[data-x="${i}"][data-y="${j}"]`);
-//                 if (cell) {
-//                     cell.classList.add('explosion');
-//                 }
-//                 // Check if Tom is within the explosion range
-//                 if (i === robotTomPosition.x && j === robotTomPosition.y) {
-//                     alert('Tom caught in the explosion! Jerry wins this round.');
-//                     resetGame();
-//                     return;
-//                 }
-//             }
-//         }
-//     }
-// }
-
-// Checking  game state
 function checkGameState() {
     if (jerryPosition.x === robotTomPosition.x && jerryPosition.y === robotTomPosition.y) {
-        alert('Caught by Tom! Game over.');
+        alert('Caught by Tom! Kya Chuha banega re tu !!!');
         resetGame();
     } else if (traps.some(trap => trap.x === jerryPosition.x && trap.y === jerryPosition.y)) {
-        alert('Jerry hit the trap! Game over.');
+        alert('Game over.');
         resetGame();
     } else if (jerryPosition.x === holePosition.x && jerryPosition.y === holePosition.y) {
-        alert('Congratulations! You reached to the hole. Next level, Respect++.');
+        alert('Mission Complete, Respect++. Next level,');
         level++;
         resetGame();
     }
 }
 
-
-
-// Reset game the game
 function resetGame() {
     jerryPosition = { x: 0, y: 0 };
     robotTomPosition = { x: 9, y: 9 };
